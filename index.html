@@ -173,55 +173,9 @@
         setInterval(createSnowflakes, 5000);
     </script>
 </body>
-<!-- 在body结束前添加以下代码 -->
-<script>
-// 创建一个全屏覆盖的跟随元素
-const colorFollower = document.createElement('div');
-colorFollower.style.cssText = `
-    position: fixed;
-    pointer-events: none;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    transition: background 0.1s ease;
-`;
-document.body.appendChild(colorFollower);
 
-// 颜色数组 - 可以自定义颜色
-const colors = [
-    'rgba(255, 105, 180, 0.6)', // 粉色
-    'rgba(255, 182, 193, 0.6)', // 浅粉色
-    'rgba(255, 228, 225, 0.6)', // 淡粉色
-    'rgba(255, 64, 129, 0.6)'   // 深粉色
-];
-
-// 鼠标移动事件
-document.addEventListener('mousemove', (e) => {
-    moveFollower(e.clientX, e.clientY);
-});
-
-// 触摸事件（手机）
-document.addEventListener('touchmove', (e) => {
-    e.preventDefault(); // 防止页面滚动
-    const touch = e.touches[0];
-    moveFollower(touch.clientX, touch.clientY);
-}, { passive: false });
-
-// 移动跟随元素并改变颜色
-function moveFollower(x, y) {
-    // 移动到光标位置
-    colorFollower.style.left = `${x}px`;
-    colorFollower.style.top = `${y}px`;
-    
-    // 根据位置计算颜色索引（让颜色随位置变化）
-    const colorIndex = Math.floor((x + y) % colors.length);
-    colorFollower.style.background = `radial-gradient(circle, ${colors[colorIndex]} 0%, rgba(255,255,255,0) 70%)`;
-}
-</script>
 </html>
 
     
+
 
